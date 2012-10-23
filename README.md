@@ -7,11 +7,11 @@ When a file is uploaded, it will be stored in `req.session` as a `File` model, f
 
 If a file with the same filename exists, the uploaded file will get an incremental counter appended to its filename.
 
-Read [https://github.com/developmentseed/bones/wiki/Plugin-Architecture] for more information on Bones plugin architecture.
+Read [the Bones wiki](https://github.com/developmentseed/bones/wiki/Plugin-Architecture) for more information on Bones plugin architecture.
 
 ### Commands
-* `--uploadDir`: Directory to where files are uploaded \[/files\]
-* `--downloadDir`: Directory from where files are downloaded \[/files\]
+* `--uploadDir`: Directory to where files are uploaded. Defaults to `/files`
+* `--downloadDir`: Directory from where files are downloaded. Defaults to `/files`
 
 ### Authors
 * [Victor Kareh](http://github.com/vkareh)
