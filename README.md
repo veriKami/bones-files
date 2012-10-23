@@ -9,6 +9,19 @@ If a file with the same filename exists, the uploaded file will get an increment
 
 Read [the Bones wiki](https://github.com/developmentseed/bones/wiki/Plugin-Architecture) for more information on Bones plugin architecture.
 
+### Usage
+Files are uploaded by doing a `POST` to the `/upload` URL.
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" />
+    </form>
+
+Files are downloading by doing a `GET` from the `/download` URL.
+
+    <a href="/download/example.txt">Download</a>
+
+By default, files are stored in the `/files` directory, which you will need to create in your application.
+
 ### Commands
 * `--uploadDir`: Directory to where files are uploaded. Defaults to `/files`
 * `--downloadDir`: Directory from where files are downloaded. Defaults to `/files`
