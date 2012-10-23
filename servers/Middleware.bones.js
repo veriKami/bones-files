@@ -39,19 +39,25 @@ servers.Middleware.augment({
         this.use(middleware.fragmentRedirect());
         // Send requested file to client
         this.get('/download/:filename', function(req, res, next) {
-            var filename = req.params.filename;
-            // @todo Restrict filetypes from being downloaded
-            fs.readFile(Bones.plugin.config.downloadDir + '/' + filename, 'utf8', function(err, data) {
-                if (err) {
-                    var error = err instanceof Object ? err.message : err;
-                    next(new Error.HTTP(error, err && err.status || 500));
-                    return;
+            var filename = Bones.plugin.config.downloadDir + '/' + req.params.filename;
+            // @todo Restrict specific filetypes from being downloaded
+            fs.exists(filename, function(exists) {
+                if (exists) {
+                    fs.readFile(filename, 'utf8', function(err, data) {
+                        if (err) {
+                            var error = err instanceof Object ? err.message : err;
+                            next(new Error.HTTP(error, err && err.status || 500));
+                            return;
+                        }
+                        // Send file to the client
+                        res.send(data, {
+                            'Content-Type': mime.lookup(filename),
+                            'Content-disposition': 'attachment; filename=' + filename
+                        });
+                    });
+                } else {
+                    next();
                 }
-                // Send file to the client
-                res.send(data, {
-                    'Content-Type': mime.lookup(filename),
-                    'Content-disposition': 'attachment; filename=' + filename
-                });
             });
         });
     }
