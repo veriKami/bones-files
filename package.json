@@ -1,0 +1,24 @@
+{
+    "name": "bones-files",
+    "description": "File handling for Bones.",
+    "author": {
+        "name": "Victor Kareh",
+        "email": "vkareh@vkareh.net",
+        "url": "http://www.vkareh.net"
+    },
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/vkareh/bones-files.git"
+    },
+    "dependencies": {
+        "mime": "1.2.x"
+    },
+    "keywords": [
+        "backbone",
+        "bones",
+        "download",
+        "files",
+        "upload"
+    ]
+}
